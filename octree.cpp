@@ -97,6 +97,9 @@ class Block{
 
 };
 
+// NODE COUNTER
+int counter=0;
+
 void printTree(Block *tree)
 {
     if(tree!=NULL)
@@ -107,6 +110,9 @@ void printTree(Block *tree)
         printTree(tree->child2);
         printTree(tree->child3);
     }
+    else{
+        counter++;
+    }
 }
 
 int main(){
@@ -114,9 +120,10 @@ int main(){
     start_x = 0;
     start_y = 0;
     end_x = 10;
-    end_y = 10;
+    end_y = 105;
     Block test = Block(start_x,start_y,end_x,end_y);
     // test.getXExtent(test.x_min,test.x_max);
     Block *iter = &test;
     printTree(iter);
+    std::cout << "COUNT:" << counter << '\n';
 }
