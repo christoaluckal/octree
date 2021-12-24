@@ -150,7 +150,7 @@ class Block{
             if(cuboidal_vec[i].isInObstacle(x_min,y_min,z_min,x_max,y_max,z_max))
             {
                 obstacle = true;
-                // std::cout << x_min<<','<<y_min<<','<<z_min<<'|'<<x_max<<','<<y_max<<','<<z_max<<" is in obstacle SKIPPING\n";
+                std::cout << x_min<<','<<y_min<<','<<z_min<<'|'<<x_max<<','<<y_max<<','<<z_max<<" is in obstacle SKIPPING\n";
             }
             else{
                 // std::cout << x_min<<','<<y_min<<','<<z_min<<'|'<<x_max<<','<<y_max<<','<<z_max<<" "<< this << '\n';
@@ -275,7 +275,7 @@ int main(){
     setLatLonFactor(19.199452);
 
     // Basic Obstacle
-    CuboidalObstacle obs1 = CuboidalObstacle(50,50,50,200,200,200);
+    CuboidalObstacle obs1 = CuboidalObstacle(1,1,1,4,4,4);
     cuboidal_vec.push_back(obs1);
 
 
@@ -306,13 +306,13 @@ int main(){
     end_x = -19.198115;
     end_y = 72.839239;
     end_z = 100;
-    delta_x = end_x-start_x;
-    delta_y = end_y-start_y;
+    delta_x = longitudeFactor*(end_x-start_x);
+    delta_y = latitudeFactor*(end_y-start_y);
     delta_z = end_z-start_z;
-    MAX_SIZE_X = 1/longitudeFactor;
-    MAX_SIZE_Y = 1/latitudeFactor;
+    // MAX_SIZE_X = 1/longitudeFactor;
+    // MAX_SIZE_Y = 1/latitudeFactor;
 
-    Block test = Block(start_x,start_y,start_z,end_x,end_y,end_z,nullptr);
+    Block test = Block(0,0,0,4,4,4,nullptr);
     Block *iter = &test;
     int total = printTreeCenters(iter,counter);
     std::cout << "COUNT:" << total << '\n';
